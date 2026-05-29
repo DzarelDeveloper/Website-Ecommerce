@@ -1,0 +1,141 @@
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+                color: #1e293b;
+            }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Playfair Display', serif;
+        color: #1d4ed8;
+            }
+
+    .hero-section {
+        background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .hero-overlay {
+        background-color: rgba(15, 23, 42, 0.7);
+            }
+
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+        .zoom-container {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .zoom-container img {
+        transition: transform 0.5s ease;
+    }
+
+    .zoom-container:hover img {
+        transform: scale(1.1);
+    }
+
+        .carousel-container {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+    .carousel-container::-webkit-scrollbar {
+        display: none;
+            }
+
+    .carousel-item {
+        flex: 0 0 auto;
+        width: 80%;
+        scroll-snap-align: center;
+    }
+
+    @media (min-width: 640px) {
+        .carousel-item {
+            width: 45%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .carousel-item {
+            width: 30%;
+        }
+    }
+
+        ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #3b82f6;
+                border-radius: 10px;
+        border: 2px solid #f8fafc;
+    }
+
+        .dark body {
+        background-color: #0f172a;
+                color: #f8fafc;
+            }
+
+    .dark .bg-white,
+    .dark .bg-\[\#f8fafc\] {
+        background-color: #1e293b !important;
+            }
+
+    .dark .text-gray-800,
+    .dark .text-gray-900,
+    .dark body,
+    .dark .text-gray-700 {
+        color: #f8fafc !important;
+    }
+
+    .dark h1,
+    .dark h2,
+    .dark h3,
+    .dark h4,
+    .dark h5,
+    .dark h6 {
+        color: #93c5fd;
+            }
+
+    .dark .text-gray-600 {
+        color: #94a3b8 !important;
+            }
+
+    .dark .border-gray-200,
+    .dark .border {
+        border-color: #334155 !important;
+            }
+
+    .dark .bg-gray-100 {
+        background-color: #334155 !important;
+            }
+
+    .dark .hover\:bg-gray-100:hover {
+        background-color: #475569 !important;
+            }

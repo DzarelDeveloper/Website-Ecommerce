@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyra Store - Digital Agency & E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-gray-800 bg-white dark:bg-[#1a1a1a]">
+
+        <div id="loading-spinner"
+        class="fixed inset-0 bg-white/80 dark:bg-black/80 z-50 flex items-center justify-center transition-opacity duration-500">
+        <div class="w-16 h-16 border-4 border-t-transparent border-black rounded-full animate-spin"></div>
+    </div>
+
+        <header
+        class="bg-white/80 dark:bg-[#2d2d2d]/80 backdrop-blur-sm sticky top-0 z-40 shadow-sm border-b border-gray-200/60 dark:border-gray-700/60">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="javascript:void(0)" class="text-3xl font-bold text-black dark:text-white" onclick="navigateTo('home')">Zyra Store</a>
+            <div class="hidden lg:flex items-center space-x-8 text-lg">
+                <a href="javascript:void(0)"
+                    class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+                    onclick="navigateTo('home')">Home</a>
+                <a href="javascript:void(0)"
+                    class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+                    onclick="navigateTo('products')">Layanan</a>
+                <a href="javascript:void(0)"
+                    class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+                    onclick="navigateTo('home', '#categories')">Kategori</a>
+                <a href="javascript:void(0)"
+                    class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+                    onclick="navigateTo('home', '#contact')">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" aria-label="Toggle theme"
+                    class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i data-lucide="sun" class="dark:hidden"></i>
+                    <i data-lucide="moon" class="hidden dark:block"></i>
+                </button>
+                <a href="javascript:void(0)" aria-label="Open cart" class="relative" onclick="navigateTo('cart')">
+                    <i data-lucide="shopping-cart" class="text-gray-600 dark:text-gray-300"></i>
+                    <span id="cart-count"
+                        class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+                </a>
+                <button class="lg:hidden" id="mobile-menu-button" aria-label="Open menu">
+                    <i data-lucide="menu" class="text-gray-600 dark:text-gray-300"></i>
+                </button>
+            </div>
+        </nav>
+                <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-[#2d2d2d] py-4">
+            <a href="javascript:void(0)" class="block px-6 py-2 text-gray-600 dark:text-gray-300" onclick="navigateTo('home')">Home</a>
+            <a href="javascript:void(0)" class="block px-6 py-2 text-gray-600 dark:text-gray-300"
+                onclick="navigateTo('products')">Layanan</a>
+            <a href="javascript:void(0)" class="block px-6 py-2 text-gray-600 dark:text-gray-300"
+                onclick="navigateTo('home', '#categories')">Kategori</a>
+            <a href="javascript:void(0)" class="block px-6 py-2 text-gray-600 dark:text-gray-300"
+                onclick="navigateTo('home', '#contact')">Contact</a>
+        </div>
+    </header>
+
+    <main id="app" class="container mx-auto px-6 max-w-7xl">
+                <section id="home-page" class="page fade-in">
+                        <div
+                class="hero-section rounded-lg my-8 h-[70vh] flex flex-col justify-center items-center text-center p-4 overflow-hidden">
+                <div class="hero-overlay absolute inset-0"></div>
+                <div class="relative z-10 text-white">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Tingkatkan Bisnis Digital Anda</h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl">Solusi pembuatan website, digital marketing, dan branding media sosial terbaik untuk bisnis Anda.</p>
+                    <button
+                        class="bg-black text-white px-8 py-3 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg"
+                        onclick="navigateTo('products')">Jelajahi Layanan Kami</button>
+                </div>
+            </div>
+
+                        <div id="categories" class="my-20 text-center">
+                <h2 class="text-4xl font-bold mb-12">Layanan Utama Kami</h2>
+                <div id="category-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
+                                    </div>
+            </div>
+
+                        <div class="my-20">
+                <h2 class="text-4xl font-bold text-center mb-12">Paket Terbaru</h2>
+                <div class="relative">
+                    <div id="new-arrivals-carousel" class="flex gap-6 carousel-container pb-4 -mx-6 px-6">
+                                            </div>
+                    <button id="prev-btn-new" aria-label="Previous"
+                        class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/80 dark:bg-black/80 rounded-full p-3 shadow-md hidden md:block hover:bg-gray-200 dark:hover:bg-gray-700 transition-all text-black"><i
+                            data-lucide="chevron-left"></i></button>
+                    <button id="next-btn-new" aria-label="Next"
+                        class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/80 dark:bg-black/80 rounded-full p-3 shadow-md hidden md:block hover:bg-gray-200 dark:hover:bg-gray-700 transition-all text-black"><i
+                            data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+
+                        <div class="my-20">
+                <h2 class="text-4xl font-bold text-center mb-12">Layanan Terpopuler</h2>
+                <div class="relative">
+                    <div id="trending-carousel" class="flex gap-6 carousel-container pb-4 -mx-6 px-6">
+                                            </div>
+                    <button id="prev-btn-trending" aria-label="Previous"
+                        class="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/80 dark:bg-black/80 rounded-full p-3 shadow-md hidden md:block hover:bg-gray-200 dark:hover:bg-gray-700 transition-all text-black"><i
+                            data-lucide="chevron-left"></i></button>
+                    <button id="next-btn-trending" aria-label="Next"
+                        class="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/80 dark:bg-black/80 rounded-full p-3 shadow-md hidden md:block hover:bg-gray-200 dark:hover:bg-gray-700 transition-all text-black"><i
+                            data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+
+                        <div id="contact" class="my-20">
+                <div class="bg-black text-white rounded-2xl p-8 md:p-12 shadow-xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-4xl font-bold mb-6 text-white">Mari Diskusikan Proyek Anda</h2>
+                            <p class="text-gray-300 text-lg mb-8 leading-relaxed">Punya ide brilian atau masalah digital yang perlu diselesaikan? Tim kami siap mendengarkan dan memberikan solusi terbaik untuk bisnis Anda.</p>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-6 h-6 mr-4 text-gray-400 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-xl text-white">Alamat Kantor</h4>
+                                        <p class="text-gray-400 mt-1">Gedung Codesphered Lt. 3<br>Jl. Teknologi No. 45, Kota Bekasi</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="phone" class="w-6 h-6 mr-4 text-gray-400"></i>
+                                    <div>
+                                        <h4 class="font-bold text-xl text-white">Telepon / WhatsApp</h4>
+                                        <p class="text-gray-400 mt-1">+62 812-3456-7890</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="mail" class="w-6 h-6 mr-4 text-gray-400"></i>
+                                    <div>
+                                        <h4 class="font-bold text-xl text-white">Email</h4>
+                                        <p class="text-gray-400 mt-1">hello@zyrastore.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20">
+                            <h3 class="text-2xl font-bold mb-6 text-white">Jam Operasional</h3>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex justify-between border-b border-white/10 pb-2"><span>Senin - Jumat</span> <span class="font-semibold text-white">09:00 - 17:00 WIB</span></li>
+                                <li class="flex justify-between border-b border-white/10 pb-2"><span>Sabtu</span> <span class="font-semibold text-white">10:00 - 14:00 WIB</span></li>
+                                <li class="flex justify-between pb-2"><span>Minggu & Libur Nasional</span> <span class="text-gray-500">Tutup</span></li>
+                            </ul>
+                            <button class="w-full mt-8 bg-white text-black font-bold py-3 rounded-md hover:bg-gray-200 transition-transform transform hover:-translate-y-1 shadow-lg flex items-center justify-center" onclick="window.open('https://wa.me/6281234567890', '_blank')">
+                                <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> Hubungi via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+                <section id="products-page" class="page hidden fade-in py-8">
+            <h1 class="text-4xl font-bold text-center mb-8">Katalog Layanan Zyra Store</h1>
+
+                        <div
+                class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <div class="flex flex-wrap items-center gap-4">
+                    <label for="filter-category" class="font-semibold">Kategori:</label>
+                    <select id="filter-category"
+                        class="p-2 border rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none">
+                        <option value="all">Semua Layanan</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Social Media">Social Media Branding</option>
+                        <option value="SEO">SEO</option>
+                    </select>
+                    <label for="filter-package" class="font-semibold">Paket:</label>
+                    <select id="filter-package"
+                        class="p-2 border rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none">
+                        <option value="all">Semua Paket</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sort-products" class="font-semibold mr-2">Urutkan:</label>
+                    <select id="sort-products"
+                        class="p-2 border rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none">
+                        <option value="popularity">Terpopuler</option>
+                        <option value="price-asc">Harga: Rendah ke Tinggi</option>
+                        <option value="price-desc">Harga: Tinggi ke Rendah</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            </div>
+        </section>
+
+                <section id="product-detail-page" class="page hidden fade-in py-12">
+            <div id="product-detail-content" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            </div>
+        </section>
+
+                <section id="cart-page" class="page hidden fade-in py-8">
+            <h1 class="text-4xl font-bold text-center mb-8">Daftar Pesanan Anda</h1>
+            <div id="cart-content">
+                            </div>
+        </section>
+
+                <section id="checkout-page" class="page hidden fade-in py-8">
+            <h1 class="text-4xl font-bold text-center mb-8">Checkout Pesanan Jasa</h1>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-6">Informasi Klien</h2>
+                    <form id="checkout-form">
+                        <div class="mb-4">
+                            <label for="name"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama Lengkap / Perusahaan</label>
+                            <input type="text" id="name"
+                                class="w-full p-3 border rounded-md dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none"
+                                minlength="3" pattern="^[A-Za-zÀ-ÿ0-9 .,'-]+$" title="Nama minimal 3 karakter (huruf, angka, spasi, titik, koma)" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email"
+                                class="w-full p-3 border rounded-md dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Format email tidak valid (contoh: nama@domain.com)" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nomor WhatsApp</label>
+                            <input type="tel" id="phone"
+                                class="w-full p-3 border rounded-md dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none"
+                                minlength="10" maxlength="15" pattern="^(\+62|62|0)8[1-9][0-9]{6,10}$" title="Nomor harus diawali 08, 628, atau +628 (contoh: 081234567890)" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="address"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Deskripsi Singkat Kebutuhan Anda</label>
+                            <textarea id="address" rows="3"
+                                class="w-full p-3 border rounded-md dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-[#000000] outline-none"
+                                minlength="10" title="Deskripsi minimal 10 karakter agar tim kami bisa memahami kebutuhan Anda dengan baik." required></textarea>
+                        </div>
+                    </form>
+                </div>
+                                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-6">Ringkasan Pesanan</h2>
+                    <div id="checkout-summary" class="space-y-4 mb-6">
+                                            </div>
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between font-bold text-lg">
+                            <span>Total Estimasi Biaya</span>
+                            <span id="checkout-total-price">Rp0</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mt-8 mb-4">Metode Pembayaran</h3>
+                    <div class="space-y-3">
+                        <label
+                            class="flex items-center p-3 border rounded-md has-[:checked]:bg-gray-100 dark:has-[:checked]:bg-gray-700 has-[:checked]:border-black cursor-pointer transition-all">
+                            <input type="radio" name="payment" class="mr-3" checked> Bank Transfer
+                        </label>
+                        <label
+                            class="flex items-center p-3 border rounded-md has-[:checked]:bg-gray-100 dark:has-[:checked]:bg-gray-700 has-[:checked]:border-black cursor-pointer transition-all">
+                            <input type="radio" name="payment" class="mr-3"> Virtual Account / QRIS
+                        </label>
+                    </div>
+                    <button
+                        class="w-full bg-black text-white py-3 rounded-md mt-8 text-lg hover:bg-[#333333] transition-transform transform hover:scale-105"
+                        onclick="placeOrder()">Konfirmasi Pesanan</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+        <footer id="footer-section" class="bg-white dark:bg-gray-900 mt-16 pt-12">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4 text-black dark:text-white">Codesphered X Zyra Network</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Mitra terpercaya untuk solusi pembuatan website, digital marketing, dan branding media sosial.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)"
+                                class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                                onclick="navigateTo('home')">Home</a></li>
+                        <li><a href="javascript:void(0)"
+                                class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                                onclick="navigateTo('products')">Semua Layanan</a></li>
+                        <li><a href="javascript:void(0)"
+                                class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" aria-label="Instagram"
+                            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram text-2xl"></i></a>
+                        <a href="javascript:void(0)" aria-label="TikTok"
+                            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok text-2xl"></i></a>
+                        <a href="javascript:void(0)" aria-label="YouTube"
+                            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                                class="fa-brands fa-youtube text-2xl"></i></a>
+                        <a href="javascript:void(0)" aria-label="Facebook"
+                            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                                class="fa-brands fa-facebook text-2xl"></i></a>
+                        <a href="javascript:void(0)" aria-label="LinkedIn"
+                            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                                class="fa-brands fa-linkedin text-2xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Dapatkan info promo dan update layanan terbaru.</p>
+                    <form class="flex" onsubmit="event.preventDefault(); showToast('Terima kasih! Anda berhasil berlangganan Newsletter kami.'); this.reset();">
+                        <input type="email" placeholder="Email Anda"
+                            class="w-full p-2 rounded-l-md bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-[#000000] outline-none" required>
+                        <button type="submit"
+                            class="bg-black text-white px-4 py-2 rounded-r-md hover:bg-gray-800 transition-colors">Daftar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center py-6 mt-8 border-t border-gray-200 dark:border-gray-800">
+                <p class="text-gray-600 dark:text-gray-400">&copy; 2026 Codesphered X Zyra Network. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+        <div id="success-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl text-center">
+            <div
+                class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full mx-auto flex items-center justify-center mb-4">
+                <i data-lucide="check" class="text-green-500" size="48"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">Pesanan Berhasil Diterima!</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">Terima kasih atas kepercayaan Anda. Tim kami akan segera menghubungi Anda melalui WhatsApp atau Email untuk konsultasi lebih lanjut.</p>
+            <button class="bg-black text-white px-6 py-2 rounded-md hover:bg-[#333333]"
+                onclick="closeModal()">Kembali ke Beranda</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
